@@ -16,17 +16,19 @@ var Person = function() {
     );
 };
 
-var PersonList = function() {
-    return (
-        <div className="person-list">
-            <Person />
-            <Person />
-            <Person />
-            <Person />
-            <Person />
-        </div>
-    );
-};
+var PersonList = React.createClass({
+    render: function() {
+        var people = [];
+        for (var i=0; i<5; i++) {
+            people.push(<Person />);
+        }
+        return (
+            <div className="person-list">
+                {people}
+            </div>
+        );
+    }
+});
 
 document.addEventListener('DOMContentLoaded', function() {
     ReactDOM.render(<PersonList />, document.getElementById('app'));
